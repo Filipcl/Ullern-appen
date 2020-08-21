@@ -1,0 +1,12 @@
+* {
+  font-family: sofia-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+body {
+  color: #222;
+  background-color: #21364b;
+}
+::-webkit-scrollbar {
+  display: none;
+}
