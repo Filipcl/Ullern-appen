@@ -36,7 +36,7 @@ export default function Navbar() {
         </Grid>
         <Grid item xs className={classes.gridItem}>
           <Paper className={classes.paper}>
-            <Typography style={{ fontWeight: 600, color: "#FFF" }} variant="h2">
+            <Typography style={{ fontWeight: 600, color: "#FFF" }} variant="h4">
               Ullernfaret 1A
             </Typography>
           </Paper>

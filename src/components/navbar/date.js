@@ -23,7 +23,7 @@ export default function ShowDate() {
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
   }
   return (
-    <Typography variant="h3" style={{ fontWeight: 600, color: "#FFF" }}>
+    <Typography variant="h4" style={{ fontWeight: 600, color: "#FFF" }}>
       {getDate()}
     </Typography>
   );

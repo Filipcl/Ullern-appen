@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CityBikeLogo from "../../assets/img/oslo_bysykkel_logo.svg";
+import useInterval from "../../hooks/useInterval";
 
 const useStyles = makeStyles({
   root: {
@@ -31,17 +32,22 @@ function Citybike() {
 
   const [data, setData] = useState(null);
   const stationId = "627";
+  const url =
+    "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json";
 
-  useEffect(() => {
+  const delay = 1000 * 60;
+
+  function updateBikeInfo() {
     axios
-      .get(
-        "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json",
-        { headers: { "Client-Identifier": "Nettbureau-dashboard" } }
-      )
+      .get(url, { headers: { "Client-Identifier": "Nettbureau-dashboard" } })
       .then((response) => {
         setData(response.data.data);
       });
-  }, []);
+  }
+
+  useInterval(() => {
+    updateBikeInfo();
+  }, delay);
 
   if (!data) {
     return "loading...";

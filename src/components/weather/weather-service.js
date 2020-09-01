@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -10,6 +10,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import iconList from "./iconList.json";
 import { Grid } from "@material-ui/core";
+import useInterval from "../../hooks/useInterval";
 
 const useStyles = makeStyles({
   root: {
@@ -35,18 +36,19 @@ function Weather() {
   const [data, setData] = useState(null);
   const lat = "59.919159";
   const lon = "10.764486";
-
+  const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`;
+  const delay = 1000 * 900;
   const newdate = moment().startOf("hour");
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`
-      )
-      .then((response) => {
-        setData(response.data);
-      });
-  }, [lat, lon]);
+  useInterval(() => {
+    updateWeather();
+  }, delay);
+
+  const updateWeather = () => {
+    axios.get(url).then((response) => {
+      setData(response.data);
+    });
+  };
 
   if (!data) {
     return "loading...";

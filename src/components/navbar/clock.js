@@ -19,7 +19,7 @@ export default function Clock() {
   }
 
   return (
-    <Typography variant="h3" style={{ fontWeight: 600, color: "#FFF" }}>
+    <Typography variant="h4" style={{ fontWeight: 600, color: "#FFF" }}>
       {moment(time.getTime()).format("HH:mm")}
     </Typography>
   );
