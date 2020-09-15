@@ -82,7 +82,11 @@ function sortDepartures(data) {
       let transportMode = departure.serviceJourney.transportSubmode;
       let place = departure.quay.name;
 
-      if (direction === "Bjørvika" || direction === "Simensbråten") {
+      if (
+        direction === "Storo-Grefsen st." ||
+        direction === "Disen" ||
+        direction === "Simensbråten"
+      ) {
         if (diff > walkingTime[places.id]) {
           if (diff < 15) {
             departuresSoon.push(
