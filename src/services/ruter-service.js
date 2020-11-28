@@ -85,6 +85,7 @@ function sortDepartures(data) {
       if (
         direction === "Storo-Grefsen st." ||
         direction === "Disen" ||
+        direction === "Ljabru" ||
         direction === "Simensbråten"
       ) {
         if (diff > walkingTime[places.id]) {
